@@ -100,6 +100,26 @@ main {
     background: #dfe6e9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background 0.4s ease;
+
+    /* 呼吸するような微細なアニメーション */
+    animation: pulse-badge 3s infinite ease-in-out;
+}
+
+@keyframes pulse-badge {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 }
 
 /* 人数表示エリア */
@@ -123,6 +143,14 @@ main {
     font-weight: 700;
     color: var(--text-sub);
     margin-left: 6px;
+}
+
+/* 定員表示（控えめなグレー） */
+.capacity-info {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-left: 4px;
 }
 
 /* バーグラフの背景 */

@@ -57,11 +57,14 @@ async function fetchOccupancy() {
  */
 function updateCard(idSuffix, count, max) {
     const numEl = document.getElementById("num" + idSuffix);
+    const maxEl = document.getElementById("max" + idSuffix); // 定員表示用要素
     const badgeEl = document.getElementById("badge" + idSuffix);
     const barEl = document.getElementById("bar" + idSuffix);
 
     // 人数表示の更新
     numEl.textContent = count;
+    // 定員表示の更新
+    maxEl.textContent = max;
 
     // 混雑率の計算
     const ratio = count / max;
