@@ -105,6 +105,72 @@ main {
     transform: rotate(-8deg) translateY(-3px);
 }
 
+/* --- 準備中オーバーレイ（12/9以降削除） --- */
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.75);
+    /* 半透明の白背景（中が見える程度に透過） */
+    backdrop-filter: blur(4px);
+    /* ガラスモーフィズム効果（ぼかしを軽減） */
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    /* すべてのコンテンツより前面に */
+}
+
+.coming-soon-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.coming-soon-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    animation: pulse-icon 2s infinite ease-in-out;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.coming-soon-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--brand-color);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.coming-soon-message {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.coming-soon-message strong {
+    color: var(--brand-color);
+    font-weight: 900;
+}
+
+/* --- 準備中オーバーレイここまで --- */
+
 /* ガイドカード用のモグラ装飾（左上配置） */
 .mogura-decoration-guide {
     position: absolute;
