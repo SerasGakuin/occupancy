@@ -6,97 +6,117 @@ Seras学院の生徒向けWebサービスを統合したポータルサイトで
 
 ### 1. 在室人数表示 (`/occupancy/`)
 自習室（本館・2号館）の在室人数をリアルタイムで表示します。
-
 - **技術スタック**: HTML, CSS, Vanilla JavaScript
 - **バックエンド**: Google Apps Script (GAS)
 - **更新間隔**: 5秒
 
 ### 2. 予約システム (`/booking/`)
 面談予約・休み登録をLIFFアプリで行います。
-
 - **技術スタック**: HTML, CSS, JavaScript, LIFF SDK
-- **バックエンド**: Google Apps Script (GAS)
-- **状態**: 🚧 開発中
+- **バックエンド**: Google Apps Script (GAS) + StudentMasterLib
+- **状態**: 🚧 開発中（プロトタイプ完成）
 
 ## 🏗️ プロジェクト構成
 
 ```
 seras-student-portal/
 ├── index.html                   # ポータルトップページ
-├── shared/                      # 共通リソース
+├── assets/                      # 共通リソース
 │   ├── css/
-│   │   └── variables.css        # CSS変数（全アプリ共通）
-│   ├── js/
+│   │   ├── base.css             # 基本スタイル
+│   │   ├── variables.css        # CSS変数（全アプリ共通）
+│   │   ├── components.css       # 共通コンポーネント
+│   │   └── animations.css       # アニメーション定義
 │   └── images/
 ├── occupancy/                   # 在室人数表示
 │   ├── index.html
 │   ├── css/
-│   ├── js/
-│   └── images/
+│   └── js/
 ├── booking/                     # 予約システム（LIFF）
 │   ├── index.html
 │   ├── css/
-│   ├── js/
-│   └── images/
+│   └── js/
+│       └── config.js            # API URL設定（重要）
+├── gas-backend/                 # 予約システム用バックエンド
+│   ├── src/
+│   │   ├── Code.js              # メインロジック
+│   │   └── appsscript.json      # プロジェクト設定
+│   └── .clasp.json              # clasp設定
 └── docs/                        # ドキュメント
 ```
 
-## 🎨 デザインシステム
-
-すべてのアプリケーションは `shared/css/variables.css` で定義された共通のデザイントークンを使用します。
-
-- **ブランドカラー**: `#f29f30`
-- **背景色**: `#f2f4f8`
-- **カードスタイル**: 角丸32px、シャドウ付き
-
 ## 🚀 開発環境のセットアップ
 
-### 1. リポジトリのクローン
+### 1. フロントエンド
+
+ローカルサーバーを起動して開発します。
 
 ```bash
-git clone https://github.com/SerasGakuin/seras-student-portal.git
-cd seras-student-portal
-```
+# 依存関係のインストール（初回のみ）
+npm install
 
-### 2. ローカルサーバーの起動
-
-```bash
+# 開発サーバーの起動
 npx -y live-server
 ```
 
-ブラウザが自動的に開き、ファイルの変更を監視して自動リロードします。
+ブラウザが自動的に開き、`http://127.0.0.1:8080` でアクセスできます。
 
-### 3. 各アプリの開発
+### 2. バックエンド (GAS)
 
-- **在室人数**: `occupancy/` ディレクトリで作業
-- **予約システム**: `booking/` ディレクトリで作業
+予約システムのバックエンドは `gas-backend/` ディレクトリで管理しています。
+`clasp` を使用して開発・デプロイを行います。
 
-## 📦 デプロイ
-
-GitHub Pagesに自動デプロイされます。`main` ブランチにプッシュすると、数分後に反映されます。
+#### セットアップ
 
 ```bash
-git add .
-git commit -m "Update"
-git push origin main
+cd gas-backend
+npm install
+npx @google/clasp login
 ```
 
-### アクセスURL
+#### 開発・デプロイフロー
 
-- **ポータル**: `https://serasgakuin.github.io/seras-student-portal/`
-- **在室人数**: `https://serasgakuin.github.io/seras-student-portal/occupancy/`
-- **予約システム**: `https://serasgakuin.github.io/seras-student-portal/booking/`
+**重要: `clasp run` は使用しません。** 以下の手順でデプロイして検証します。
 
-## 📝 ドキュメント
+1.  **コード編集**: `gas-backend/src/Code.js` を編集します。
+2.  **Push**: コードをGASプロジェクトにアップロードします。
+    ```bash
+    npx @google/clasp push
+    ```
+3.  **Deploy (固定ID)**:
+    URLを固定するため、常に**同じデプロイメントID**に対して新しいバージョンをデプロイします。
+    
+    ```bash
+    # 初回のみ: 新規デプロイ作成
+    # npx @google/clasp deploy --description "Initial deployment"
+    
+    # 2回目以降: 既存のデプロイIDを指定して更新（URLが変わらない）
+    npx @google/clasp deploy -i <DEPLOYMENT_ID> --description "変更内容の説明"
+    ```
+    
+    ※ `DEPLOYMENT_ID` は `npx @google/clasp deployments` で確認できます（`@HEAD` ではなく `@数字` がついているもの）。
 
-- [拡張提案書](docs/拡張提案書.md) - 予約システムの詳細仕様
+4.  **検証**: `curl` またはフロントエンドアプリから動作確認します。
 
-## 🔧 バックエンド
+#### 注意点
+- **権限エラー**: `Exception: You do not have permission...` が出る場合は、ブラウザでGASエディタを開き、関数を一度手動実行して権限を承認してください。
 
-各サービスのバックエンドはGoogle Apps Scriptで実装されています。
+## 🗺️ 今後の開発ロードマップ
 
-- **在室人数**: スプレッドシート「在室人数」に紐付け
-- **予約システム**: スプレッドシート「指導報告ログ」に紐付け（予定）
+### フェーズ1: フロントエンド開発（完了）
+- [x] UI/UXの実装（HTML/CSS/JS）
+- [x] フォームロジックの実装
+- [x] バックエンドとの結合テスト（ダミーユーザー）
+
+### フェーズ2: LIFF連携（次フェーズ）
+- [ ] LIFF IDの取得と `config.js` への設定
+- [ ] `DEV_MODE` を `false` に変更
+- [ ] 実機（LINEアプリ）での動作確認
+- [ ] `userId` 取得ロジックの本番化
+
+### フェーズ3: 本番運用
+- [ ] GitHub Pagesへのデプロイ
+- [ ] LINE公式アカウントのリッチメニューへのリンク設定
 
 ## 📄 ライセンス
 

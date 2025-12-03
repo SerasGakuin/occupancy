@@ -1,0 +1,230 @@
+/* ========================================
+   Common Components
+   ======================================== */
+
+/* --- Glassmorphism Card --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-card);
+    padding: var(--card-padding);
+    margin-bottom: 24px;
+    position: relative;
+    transition: transform var(--transition-bounce), box-shadow var(--transition-normal);
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* --- Buttons --- */
+.btn-base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.05em;
+}
+
+.btn-base:active {
+    transform: scale(0.98);
+}
+
+.btn-base:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* 光沢エフェクト */
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.btn-shine:hover::after {
+    opacity: 1;
+}
+
+/* Primary Button (Brand Color) */
+.btn-primary {
+    background: var(--brand-color);
+    box-shadow: 0 10px 20px rgba(242, 159, 48, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(242, 159, 48, 0.35);
+}
+
+/* Gradient Buttons */
+.btn-gradient-orange {
+    background: linear-gradient(135deg, #f29f30 0%, #ffbe76 100%);
+    box-shadow: 0 10px 20px rgba(242, 159, 48, 0.25);
+}
+
+.btn-gradient-orange:hover {
+    box-shadow: 0 15px 30px rgba(242, 159, 48, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-gradient-teal {
+    background: linear-gradient(135deg, #00cec9 0%, #55efc4 100%);
+    box-shadow: 0 10px 20px rgba(0, 206, 201, 0.25);
+}
+
+.btn-gradient-teal:hover {
+    box-shadow: 0 15px 30px rgba(0, 206, 201, 0.35);
+    transform: translateY(-2px);
+}
+
+/* --- Form Elements --- */
+.form-group {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    padding-left: 4px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #f2f4f8;
+    color: var(--text-main);
+    transition: all 0.2s;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    appearance: none;
+}
+
+.form-input:focus {
+    border-color: var(--brand-color);
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(242, 159, 48, 0.1);
+}
+
+/* Select Arrow */
+select.form-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a4b0be' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+}
+
+/* --- Badges --- */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 100px;
+    color: #fff;
+    background: #dfe6e9;
+    box-shadow: var(--shadow-badge);
+    transition: background 0.4s ease;
+}
+
+.user-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: var(--shadow-badge);
+    backdrop-filter: blur(4px);
+}
+
+/* --- Links --- */
+.link-sub {
+    display: inline-block;
+    margin-top: 24px;
+    color: var(--text-sub);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s;
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+.link-sub:hover {
+    color: var(--text-main);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* --- Loading Overlay --- */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.loading-overlay.visible {
+    opacity: 1;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(242, 159, 48, 0.2);
+    border-top: 4px solid var(--brand-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* --- Error Message --- */
+.error-msg {
+    text-align: center;
+    color: var(--status-high);
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: none;
+}

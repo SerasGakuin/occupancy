@@ -1,0 +1,60 @@
+/**
+ * Seras学院 共通CSS変数
+ * すべてのアプリケーションで使用する共通のデザイントークン
+ */
+
+:root {
+   /* ========================================
+       カラーパレット
+       ======================================== */
+
+   /* ブランドカラー */
+   --brand-color: #f29f30;
+
+   /* 背景色 */
+   --bg-color: #f2f4f8;
+   --card-bg-color: #ffffff;
+
+   /* テキストカラー */
+   --text-main: #2d3436;
+   --text-sub: #a4b0be;
+
+   /* 混雑状況に応じたステータスカラー */
+   --status-low: #00cec9;
+   /* 空き */
+   --status-mid: #f29f30;
+   /* やや混雑 */
+   --status-high: #ff7675;
+   /* 混雑 */
+
+   /* ========================================
+       サイズ・スペーシング
+       ======================================== */
+
+   /* カードのサイズ */
+   --card-max-width: 420px;
+   --card-border-radius: 32px;
+   --card-padding: 28px;
+
+   /* フォントサイズ */
+   --font-size-large: 4.5rem;
+   --font-size-medium: 1.6rem;
+   --font-size-normal: 1rem;
+   --font-size-small: 0.85rem;
+
+   /* ========================================
+       エフェクト
+       ======================================== */
+
+   /* シャドウ - より洗練された奥行き */
+   --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+   --shadow-card-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+   --shadow-badge: 0 4px 12px rgba(0, 0, 0, 0.08);
+   --shadow-input: 0 2px 6px rgba(0, 0, 0, 0.02);
+   --shadow-input-focus: 0 4px 12px rgba(242, 159, 48, 0.15);
+
+   /* トランジション - より滑らかに */
+   --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+   --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

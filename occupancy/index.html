@@ -13,6 +13,10 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@500;700;900&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -26,36 +30,38 @@
     <main>
         <div id="errorDisplay" class="error-msg"></div>
 
-        <div class="card-base status-card">
-            <!-- 12/9まで表示する準備中オーバーレイ（12/9以降この1行を削除） -->
-            <div class="coming-soon-overlay">
-                <div class="coming-soon-content">
-                    <div class="coming-soon-icon">🚧</div>
-                    <div class="coming-soon-title">準備中</div>
-                    <div class="coming-soon-message">本館の在室人数表示は<br><strong>12/9(火)</strong>から開始します</div>
+        <div style="position: relative;">
+            <img src="../assets/images/mogura_insert.png" alt="モグラ" class="mogura-decoration">
+            <div class="glass-card status-card">
+                <!-- 12/9まで表示する準備中オーバーレイ（12/9以降この1行を削除） -->
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-content">
+                        <div class="coming-soon-icon">🚧</div>
+                        <div class="coming-soon-title">準備中</div>
+                        <div class="coming-soon-message">本館の在室人数表示は<br><strong>12/9(火)</strong>から開始します</div>
+                    </div>
                 </div>
-            </div>
 
-            <img src="images/mogura_insert.png" alt="モグラ" class="mogura-decoration">
-            <div class="card-top">
-                <div class="room-name">本館</div>
-                <div class="status-badge" id="badge1">--</div>
-            </div>
+                <div class="card-top">
+                    <div class="room-name">本館</div>
+                    <div class="status-badge badge" id="badge1">--</div>
+                </div>
 
-            <div class="number-area">
-                <span id="num1" class="number">--</span><span class="unit">人</span>
-                <span class="capacity-info">/ <span id="max1">--</span>人</span>
-            </div>
+                <div class="number-area">
+                    <span id="num1" class="number">--</span><span class="unit">人</span>
+                    <span class="capacity-info">/ <span id="max1">--</span>人</span>
+                </div>
 
-            <div class="bar-bg">
-                <div id="bar1" class="bar-fill"></div>
+                <div class="bar-bg">
+                    <div id="bar1" class="bar-fill"></div>
+                </div>
             </div>
         </div>
 
-        <div class="card-base status-card">
+        <div class="glass-card status-card">
             <div class="card-top">
                 <div class="room-name">2号館</div>
-                <div class="status-badge" id="badge2">--</div>
+                <div class="status-badge badge" id="badge2">--</div>
             </div>
 
             <div class="number-area">
@@ -74,41 +80,43 @@
 
         <div class="section-title">GUIDE & RULES</div>
 
-        <div class="card-base guide-card">
-            <img src="images/mogura_insert_2.png" alt="モグラ2" class="mogura-decoration-guide">
+        <div style="position: relative;">
+            <img src="../assets/images/mogura_insert_2.png" alt="モグラ2" class="mogura-decoration-guide">
+            <div class="glass-card guide-card">
 
-            <div class="guide-item">
-                <div class="guide-icon">🔥</div>
-                <div class="guide-content">
-                    <div class="guide-head">自習室を使い倒そう</div>
-                    <div class="guide-desc">迷ったら来る。それが成績アップへの最短ルートです。自分の部屋だと思って積極的に活用しよう。</div>
+                <div class="guide-item">
+                    <div class="guide-icon">🔥</div>
+                    <div class="guide-content">
+                        <div class="guide-head">自習室を使い倒そう</div>
+                        <div class="guide-desc">迷ったら来る。それが成績アップへの最短ルートです。自分の部屋だと思って積極的に活用しよう。</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="guide-item">
-                <div class="guide-icon">🤝</div>
-                <div class="guide-content">
-                    <div class="guide-head">お互いにリスペクトを</div>
-                    <div class="guide-desc">みんなが本気で勉強しています。大きな音や振動には気配りを。譲り合いの心が空間を良くします。</div>
+                <div class="guide-item">
+                    <div class="guide-icon">🤝</div>
+                    <div class="guide-content">
+                        <div class="guide-head">お互いにリスペクトを</div>
+                        <div class="guide-desc">みんなが本気で勉強しています。大きな音や振動には気配りを。譲り合いの心が空間を良くします。</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="guide-item">
-                <div class="guide-icon">🤫</div>
-                <div class="guide-content">
-                    <div class="guide-head">2号館は「没頭」エリア</div>
-                    <div class="guide-desc">ここでの私語は厳禁です。静寂こそが最強の武器。深い集中を作りたい時は2号館へ。</div>
+                <div class="guide-item">
+                    <div class="guide-icon">🤫</div>
+                    <div class="guide-content">
+                        <div class="guide-head">2号館は「没頭」エリア</div>
+                        <div class="guide-desc">ここでの私語は厳禁です。静寂こそが最強の武器。深い集中を作りたい時は2号館へ。</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="guide-item">
-                <div class="guide-icon">🚦</div>
-                <div class="guide-content">
-                    <div class="guide-head">移動は安全第一で</div>
-                    <div class="guide-desc">校舎間の移動は交通ルールを守りましょう。焦る必要はありません。事故にはくれぐれも気をつけて。</div>
+                <div class="guide-item">
+                    <div class="guide-icon">🚦</div>
+                    <div class="guide-content">
+                        <div class="guide-head">移動は安全第一で</div>
+                        <div class="guide-desc">校舎間の移動は交通ルールを守りましょう。焦る必要はありません。事故にはくれぐれも気をつけて。</div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
     </main>
