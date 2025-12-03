@@ -3,118 +3,107 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Seras学院 自習室在室人数</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seras学院 生徒ポータル</title>
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-    <link rel="icon" href="images/mogura_icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@500;700;900&display=swap"
-        rel="stylesheet">
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+        h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .brand {
+            color: var(--brand-color);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 3rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .app-card {
+            background: var(--card-bg-color);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-card);
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1><span class="brand">Seras学院</span> 生徒ポータル</h1>
+        <p class="subtitle">各種サービスにアクセスできます</p>
 
-    <header>
-        <h1><span class="brand">Seras学院</span> 自習室の在室人数</h1>
-        <div class="subtitle">リアルタイム更新中</div>
-    </header>
+        <div class="app-grid">
+            <a href="occupancy/" class="app-card">
+                <div class="app-icon">📊</div>
+                <div class="app-title">在室人数</div>
+                <div class="app-description">自習室の混雑状況をリアルタイムで確認</div>
+            </a>
 
-    <main>
-        <div id="errorDisplay" class="error-msg"></div>
-
-        <div class="card-base status-card">
-            <!-- 12/9まで表示する準備中オーバーレイ（12/9以降この1行を削除） -->
-            <div class="coming-soon-overlay">
-                <div class="coming-soon-content">
-                    <div class="coming-soon-icon">🚧</div>
-                    <div class="coming-soon-title">準備中</div>
-                    <div class="coming-soon-message">本館の在室人数表示は<br><strong>12/9(火)</strong>から開始します</div>
-                </div>
-            </div>
-
-            <img src="images/mogura_insert.png" alt="モグラ" class="mogura-decoration">
-            <div class="card-top">
-                <div class="room-name">本館</div>
-                <div class="status-badge" id="badge1">--</div>
-            </div>
-
-            <div class="number-area">
-                <span id="num1" class="number">--</span><span class="unit">人</span>
-                <span class="capacity-info">/ <span id="max1">--</span>人</span>
-            </div>
-
-            <div class="bar-bg">
-                <div id="bar1" class="bar-fill"></div>
-            </div>
+            <a href="booking/" class="app-card">
+                <div class="app-icon">📅</div>
+                <div class="app-title">予約システム</div>
+                <div class="app-description">面談予約・休み登録</div>
+            </a>
         </div>
-
-        <div class="card-base status-card">
-            <div class="card-top">
-                <div class="room-name">2号館</div>
-                <div class="status-badge" id="badge2">--</div>
-            </div>
-
-            <div class="number-area">
-                <span id="num2" class="number">--</span><span class="unit">人</span>
-                <span class="capacity-info">/ <span id="max2">--</span>人</span>
-            </div>
-
-            <div class="bar-bg">
-                <div id="bar2" class="bar-fill"></div>
-            </div>
-        </div>
-
-        <div class="timestamp-area">
-            <div id="lastUpdated">データ読み込み中...</div>
-        </div>
-
-        <div class="section-title">GUIDE & RULES</div>
-
-        <div class="card-base guide-card">
-            <img src="images/mogura_insert_2.png" alt="モグラ2" class="mogura-decoration-guide">
-
-            <div class="guide-item">
-                <div class="guide-icon">🔥</div>
-                <div class="guide-content">
-                    <div class="guide-head">自習室を使い倒そう</div>
-                    <div class="guide-desc">迷ったら来る。それが成績アップへの最短ルートです。自分の部屋だと思って積極的に活用しよう。</div>
-                </div>
-            </div>
-
-            <div class="guide-item">
-                <div class="guide-icon">🤝</div>
-                <div class="guide-content">
-                    <div class="guide-head">お互いにリスペクトを</div>
-                    <div class="guide-desc">みんなが本気で勉強しています。大きな音や振動には気配りを。譲り合いの心が空間を良くします。</div>
-                </div>
-            </div>
-
-            <div class="guide-item">
-                <div class="guide-icon">🤫</div>
-                <div class="guide-content">
-                    <div class="guide-head">2号館は「没頭」エリア</div>
-                    <div class="guide-desc">ここでの私語は厳禁です。静寂こそが最強の武器。深い集中を作りたい時は2号館へ。</div>
-                </div>
-            </div>
-
-            <div class="guide-item">
-                <div class="guide-icon">🚦</div>
-                <div class="guide-content">
-                    <div class="guide-head">移動は安全第一で</div>
-                    <div class="guide-desc">校舎間の移動は交通ルールを守りましょう。焦る必要はありません。事故にはくれぐれも気をつけて。</div>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
-
-    <script type="module" src="js/script.js"></script>
-
+    </div>
 </body>
 
 </html>

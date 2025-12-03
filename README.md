@@ -1,65 +1,61 @@
-# Seras学院 自習室在室人数モニター
+# Seras学院 生徒ポータル
 
-Seras学院の自習室（1号館・2号館）の在室人数をリアルタイムで表示するWebアプリケーションです。
+Seras学院の生徒向けWebサービスを統合したポータルサイトです。
 
-## 概要
+## 📱 サービス一覧
 
-生徒が自習室の混雑状況をひと目で確認できるように、定員に対する利用率を視覚的に表示します。
-5秒ごとに最新のデータを取得し、画面を更新します。
+### 1. 在室人数表示 (`/occupancy/`)
+自習室（本館・2号館）の在室人数をリアルタイムで表示します。
 
-## 技術スタック
+- **技術スタック**: HTML, CSS, Vanilla JavaScript
+- **バックエンド**: Google Apps Script (GAS)
+- **更新間隔**: 5秒
 
-*   **Frontend**: HTML5, CSS3, Vanilla JavaScript
-*   **Backend**: Google Apps Script (GAS)
+### 2. 予約システム (`/booking/`)
+面談予約・休み登録をLIFFアプリで行います。
 
-## バックエンドについて
+- **技術スタック**: HTML, CSS, JavaScript, LIFF SDK
+- **バックエンド**: Google Apps Script (GAS)
+- **状態**: 🚧 開発中
 
-バックエンドのロジックは、Googleスプレッドシート「在室人数」に紐付いたGASプロジェクト内にあります。
-該当するスクリプトファイル名は `1_occupancyWebApp.gs` です。
-このスクリプトがWebアプリとしてデプロイされており、JSON形式で在室人数データを返却します。
-
-## ディレクトリ構成
+## 🏗️ プロジェクト構成
 
 ```
-.
-├── index.html      # メインページ
-├── css/
-│   └── style.css   # スタイルシート
-├── js/
-│   ├── config.js   # アプリケーション設定（API URL、定員など）
-│   └── script.js   # アプリケーションロジック
-└── images/
-    ├── mogura_icon.png      # ファビコン画像
-    ├── mogura_insert.png    # 本館カード装飾用モグラ画像
-    └── mogura_insert_2.png  # ガイドカード装飾用モグラ画像
+seras-student-portal/
+├── index.html                   # ポータルトップページ
+├── shared/                      # 共通リソース
+│   ├── css/
+│   │   └── variables.css        # CSS変数（全アプリ共通）
+│   ├── js/
+│   └── images/
+├── occupancy/                   # 在室人数表示
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── booking/                     # 予約システム（LIFF）
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── docs/                        # ドキュメント
 ```
 
-## 設定ファイル
+## 🎨 デザインシステム
 
-アプリケーションの設定は `js/config.js` で一元管理されています。
+すべてのアプリケーションは `shared/css/variables.css` で定義された共通のデザイントークンを使用します。
 
-### 主な設定項目
+- **ブランドカラー**: `#f29f30`
+- **背景色**: `#f2f4f8`
+- **カードスタイル**: 角丸32px、シャドウ付き
 
-- **API_URL**: バックエンドのGAS WebアプリURL
-- **CAPACITIES**: 各号館の定員
-- **UPDATE_INTERVAL**: データ更新間隔（ミリ秒）
-- **STATUS_THRESHOLDS**: 混雑状況の判定閾値
-- **DEBUG_MODE**: デバッグログの出力設定
-
-### 環境の自動判定
-
-`config.js` は実行環境を自動判定します：
-
-- **開発環境** (localhost): `API_URL_DEVELOPMENT` を使用、デバッグモードON
-- **本番環境** (GitHub Pages): `API_URL_PRODUCTION` を使用、デバッグモードOFF
-
-## 開発環境のセットアップ
+## 🚀 開発環境のセットアップ
 
 ### 1. リポジトリのクローン
 
 ```bash
-git clone https://github.com/SerasGakuin/occupancy.git
-cd occupancy
+git clone https://github.com/SerasGakuin/seras-student-portal.git
+cd seras-student-portal
 ```
 
 ### 2. ローカルサーバーの起動
@@ -70,25 +66,38 @@ npx -y live-server
 
 ブラウザが自動的に開き、ファイルの変更を監視して自動リロードします。
 
-### 3. 設定の変更
+### 3. 各アプリの開発
 
-API URLや定員を変更する場合は、`js/config.js` を編集してください。
+- **在室人数**: `occupancy/` ディレクトリで作業
+- **予約システム**: `booking/` ディレクトリで作業
 
-```javascript
-// 例: 定員を変更
-CAPACITIES: {
-    building1: 25,  // 本館の定員を25に変更
-    building2: 15   // 2号館の定員を15に変更
-}
-```
-
-## デプロイ
+## 📦 デプロイ
 
 GitHub Pagesに自動デプロイされます。`main` ブランチにプッシュすると、数分後に反映されます。
 
 ```bash
 git add .
-git commit -m "Update configuration"
+git commit -m "Update"
 git push origin main
 ```
 
+### アクセスURL
+
+- **ポータル**: `https://serasgakuin.github.io/seras-student-portal/`
+- **在室人数**: `https://serasgakuin.github.io/seras-student-portal/occupancy/`
+- **予約システム**: `https://serasgakuin.github.io/seras-student-portal/booking/`
+
+## 📝 ドキュメント
+
+- [拡張提案書](docs/拡張提案書.md) - 予約システムの詳細仕様
+
+## 🔧 バックエンド
+
+各サービスのバックエンドはGoogle Apps Scriptで実装されています。
+
+- **在室人数**: スプレッドシート「在室人数」に紐付け
+- **予約システム**: スプレッドシート「指導報告ログ」に紐付け（予定）
+
+## 📄 ライセンス
+
+© 2025 Seras学院
