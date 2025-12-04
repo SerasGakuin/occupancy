@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { OccupancyCard } from '@/components/OccupancyCard';
-import { GuideCard } from '@/components/GuideCard';
+import { OccupancyCard } from '@/features/occupancy/components/OccupancyCard';
+import { GuideCard } from '@/features/occupancy/components/GuideCard';
 import styles from './page.module.css';
+import { BackLink } from '@/components/ui/BackLink';
+import { LoadingOverlay } from '@/components/ui/LoadingOverlay';
 
 // Configuration
 const API_URL = "/api/occupancy";
@@ -19,7 +21,7 @@ interface OccupancyData {
     timestamp: string;
 }
 
-import { BackLink } from '@/components/BackLink';
+
 
 export default function OccupancyPage() {
     const [data, setData] = useState<OccupancyData | null>(null);

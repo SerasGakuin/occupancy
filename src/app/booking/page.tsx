@@ -1,9 +1,9 @@
 'use client';
 
-import { PortalCard } from '@/components/PortalCard';
+import { PortalCard } from '@/components/ui/PortalCard';
 import { useLiff } from '@/lib/liff';
-import { LoadingOverlay } from '@/components/LoadingOverlay';
-import { BackLink } from '@/components/BackLink';
+import { LoadingOverlay } from '@/components/ui/LoadingOverlay';
+import { BackLink } from '@/components/ui/BackLink';
 import styles from '../page.module.css';
 
 export default function BookingMenu() {

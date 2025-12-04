@@ -3,14 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLiff } from '@/lib/liff';
-import { GlassCard } from '@/components/GlassCard';
-import { Button } from '@/components/Button';
-import { FormGroup } from '@/components/FormGroup';
-import { ButtonGroup } from '@/components/ButtonGroup';
-import { BackLink } from '@/components/BackLink';
-import { LoadingOverlay } from '@/components/LoadingOverlay';
-import { DateButtonSelect } from '@/components/DateButtonSelect';
-import { TimeRangeSlider } from '@/components/TimeRangeSlider';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { Button } from '@/components/ui/Button';
+import { FormGroup } from '@/components/ui/FormGroup';
+import { ButtonGroup } from '@/features/booking/components/ButtonGroup';
+import { BackLink } from '@/components/ui/BackLink';
+import { LoadingOverlay } from '@/components/ui/LoadingOverlay';
+import { DateButtonSelect } from '@/features/booking/components/DateButtonSelect';
+import { TimeRangeSlider } from '@/features/booking/components/TimeRangeSlider';
 import { CONFIG } from '@/lib/config';
 import { ApiResponse, BookingRequest } from '@/types';
 

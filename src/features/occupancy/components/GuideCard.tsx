@@ -1,6 +1,6 @@
 'use client';
 
-import { GlassCard } from '@/components/GlassCard';
+import { GlassCard } from '@/components/ui/GlassCard';
 import Image from 'next/image';
 import styles from './GuideCard.module.css';
 

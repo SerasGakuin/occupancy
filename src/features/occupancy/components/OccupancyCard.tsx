@@ -1,8 +1,8 @@
 'use client';
 
-import { GlassCard } from '@/components/GlassCard';
+import { GlassCard } from '@/components/ui/GlassCard';
 import Image from 'next/image';
-import { AnimatedNumber } from '@/components/AnimatedNumber';
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber';
 import styles from './OccupancyCard.module.css';
 
 interface StatusConfig {

@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLiff } from '@/lib/liff';
-import { GlassCard } from '@/components/GlassCard';
-import { Button } from '@/components/Button';
-import { FormGroup } from '@/components/FormGroup';
-import { FormInput } from '@/components/FormInput';
-import { BackLink } from '@/components/BackLink';
-import { LoadingOverlay } from '@/components/LoadingOverlay';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { Button } from '@/components/ui/Button';
+import { FormGroup } from '@/components/ui/FormGroup';
+import { FormInput } from '@/components/ui/FormInput';
+import { BackLink } from '@/components/ui/BackLink';
+import { LoadingOverlay } from '@/components/ui/LoadingOverlay';
 
 export default function RestPage() {
     const router = useRouter();
