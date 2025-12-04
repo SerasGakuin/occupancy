@@ -2,10 +2,6 @@ import { getGoogleSheets } from './googleSheets';
 
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 
-interface Student {
-    lineId: string;
-    name: string;
-}
 
 export const getStudentNameFromLineId = async (lineId: string): Promise<string | null> => {
     if (!SPREADSHEET_ID) {

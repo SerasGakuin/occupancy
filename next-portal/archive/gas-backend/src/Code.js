@@ -5,6 +5,7 @@
 /**
  * WebアプリへのPOSTリクエストを処理
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function doPost(e) {
     // CORS対策（レスポンスヘッダー用）
     // GASのWebアプリはリダイレクトされるため、クライアント側でのCORS制御は限定的だが、

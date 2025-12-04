@@ -1,0 +1,28 @@
+/* ========================================
+   Occupancy Page Styles
+   ======================================== */
+
+/* --- 最終更新日時 --- */
+.timestamp {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 50px;
+    padding-right: 10px;
+    width: 100%;
+    max-width: var(--card-max-width);
+}
+
+/* --- セクションタイトル (GUIDE & RULES) --- */
+.sectionTitle {
+    font-size: 1.0rem;
+    font-weight: 900;
+    color: var(--brand-color);
+    margin: 0 0 20px 0;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(242, 159, 48, 0.2);
+}

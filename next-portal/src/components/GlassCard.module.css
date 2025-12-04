@@ -1,0 +1,25 @@
+/* ========================================
+   GlassCard Component Styles
+   ======================================== */
+
+.card {
+    /* 背景色 (不透明度高め) */
+    background: var(--card-bg);
+    /* すりガラス効果 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* 境界線 (半透明) */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-card);
+    padding: var(--card-padding);
+    margin-bottom: 24px;
+    position: relative;
+    /* トランジション設定 */
+    transition: transform var(--transition-bounce), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}

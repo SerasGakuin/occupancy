@@ -65,9 +65,10 @@ export const LiffProvider = ({ children }: { children: React.ReactNode }) => {
                     // Auto login if not logged in (optional, depending on UX)
                     // liff.login();
                 }
-            } catch (e: any) {
-                console.error('LIFF initialization failed', e);
-                setError(e.message);
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+                console.error('LIFF init failed', err);
+                setError(err.message);
                 // Fallback to mock data in dev if init fails (e.g. wrong LIFF ID)
                 if (process.env.NODE_ENV === 'development') {
                     setProfile({

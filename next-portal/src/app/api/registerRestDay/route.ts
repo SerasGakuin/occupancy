@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
 import { getStudentNameFromLineId } from '@/lib/studentMaster';
 import { getGoogleCalendar } from '@/lib/googleCalendar';
+import { ApiResponse, RestDayRequest } from '@/types';
 
 const CALENDAR_ID = process.env.CALENDAR_ID || 'primary';
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { userId, date } = body;
+        const { userId, date } = body as RestDayRequest;
 
         // Validation
         if (!userId || !date) {
-            return NextResponse.json(
+            return NextResponse.json<ApiResponse>(
                 { status: 'error', message: 'Missing required fields' },
                 { status: 400 }
             );
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
         // Get student name
         const studentName = await getStudentNameFromLineId(userId);
         if (!studentName) {
-            return NextResponse.json(
+            return NextResponse.json<ApiResponse>(
                 { status: 'error', message: '未登録生徒' },
                 { status: 404 }
             );
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
             },
         });
 
-        return NextResponse.json({
+        return NextResponse.json<ApiResponse>({
             status: 'ok',
             data: {
                 eventId: event.data.id,
@@ -53,10 +54,11 @@ export async function POST(request: Request) {
                 date: date,
             },
         });
-    } catch (error: any) {
-        console.error('Error in registerRestDay API:', error);
-        return NextResponse.json(
-            { status: 'error', message: error.message },
+    } catch (error: unknown) {
+        console.error('Error registering rest day:', error);
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.json<ApiResponse>(
+            { status: 'error', message },
             { status: 500 }
         );
     }

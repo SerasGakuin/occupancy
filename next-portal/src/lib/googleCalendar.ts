@@ -17,6 +17,7 @@ export const getGoogleCalendar = async () => {
     });
 
     const client = await auth.getClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const calendar = google.calendar({ version: 'v3', auth: client as any });
 
     return calendar;

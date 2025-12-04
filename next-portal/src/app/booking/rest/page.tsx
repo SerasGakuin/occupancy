@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLiff } from '@/lib/liff';
 import { GlassCard } from '@/components/GlassCard';
 import { Button } from '@/components/Button';
 import { FormGroup } from '@/components/FormGroup';
+import { FormInput } from '@/components/FormInput';
+import { BackLink } from '@/components/BackLink';
+import { LoadingOverlay } from '@/components/LoadingOverlay';
 
 export default function RestPage() {
     const router = useRouter();
@@ -39,10 +41,11 @@ export default function RestPage() {
 
             if (data.status === 'ok') {
                 alert('休み登録が完了しました！');
-                router.push('/');
+                router.push('/booking');
             } else {
                 throw new Error(data.message || '登録に失敗しました');
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             alert(error.message);
         } finally {
@@ -51,7 +54,7 @@ export default function RestPage() {
     };
 
     if (isLiffLoading) {
-        return <div className="loading-overlay visible"><div className="loading-spinner"></div></div>;
+        return <LoadingOverlay />;
     }
 
     if (!isLoggedIn) {
@@ -67,9 +70,8 @@ export default function RestPage() {
             <GlassCard className="animate-slide-up" style={{ textAlign: 'left' }}>
                 <form onSubmit={handleSubmit}>
                     <FormGroup label="休む日">
-                        <input
+                        <FormInput
                             type="date"
-                            className="form-input"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             required
@@ -81,15 +83,9 @@ export default function RestPage() {
                     </Button>
                 </form>
 
-                <Link href="/" className="back-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                        style={{ marginRight: '4px', verticalAlign: 'middle' }}>
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
+                <BackLink href="/booking">
                     メニューに戻る
-                </Link>
+                </BackLink>
             </GlassCard>
         </div>
     );

@@ -1,14 +1,18 @@
 import React from 'react';
 
-interface GlassCardProps {
+import styles from './GlassCard.module.css';
+
+interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
-    className?: string;
-    style?: React.CSSProperties;
 }
 
-export const GlassCard: React.FC<GlassCardProps> = ({ children, className = '', style }) => {
+export const GlassCard = ({ children, className = '', ...props }: GlassCardProps) => {
     return (
-        <div className={`glass-card ${className}`} style={style}>
+        <div className={`${styles.card} ${className}`} {...props} style={{
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            ...props.style
+        }}>
             {children}
         </div>
     );

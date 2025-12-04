@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getStudentNameFromLineId } from '@/lib/studentMaster';
+import { ApiResponse } from '@/types';
 
 export async function POST(request: Request) {
     try {
@@ -7,18 +8,19 @@ export async function POST(request: Request) {
         const { userId } = body;
 
         if (!userId) {
-            return NextResponse.json({ status: 'error', message: 'userId is required' }, { status: 400 });
+            return NextResponse.json<ApiResponse>({ status: 'error', message: 'userId is required' }, { status: 400 });
         }
 
         const name = await getStudentNameFromLineId(userId);
 
         if (name) {
-            return NextResponse.json({ status: 'ok', data: { name } });
+            return NextResponse.json<ApiResponse>({ status: 'ok', data: { name } });
         } else {
-            return NextResponse.json({ status: 'error', message: 'Student not found' }, { status: 404 });
+            return NextResponse.json<ApiResponse>({ status: 'error', message: 'Student not found' }, { status: 404 });
         }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Error in test API:', error);
-        return NextResponse.json({ status: 'error', message: error.message }, { status: 500 });
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.json<ApiResponse>({ status: 'error', message }, { status: 500 });
     }
 }

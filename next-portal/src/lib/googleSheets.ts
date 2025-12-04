@@ -20,6 +20,7 @@ export const getGoogleSheets = async () => {
     });
 
     const client = await auth.getClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const googleSheets = google.sheets({ version: 'v4', auth: client as any });
 
     return googleSheets;

@@ -1,15 +1,16 @@
 import React from 'react';
 
+import styles from './FormGroup.module.css';
+
 interface FormGroupProps {
     label: string;
     children: React.ReactNode;
-    className?: string;
 }
 
-export const FormGroup: React.FC<FormGroupProps> = ({ label, children, className = '' }) => {
+export const FormGroup = ({ label, children }: FormGroupProps) => {
     return (
-        <div className={`form-group ${className}`}>
-            <label>{label}</label>
+        <div className={styles.group}>
+            <label className={styles.label}>{label}</label>
             {children}
         </div>
     );

@@ -7,16 +7,22 @@ Seras学院の生徒向けWebサービスを統合したポータルサイトで
 ### 1. 在室人数表示 (`/occupancy/`)
 自習室（本館・2号館）の在室人数をリアルタイムで表示します。
 - **技術スタック**: HTML, CSS, Vanilla JavaScript
-- **バックエンド**: Google Apps Script (GAS)
-- **更新間隔**: 5秒
+- **バックエンド**: Google Apps Script
+## プロジェクト構成
 
+- **`src/app/`**:
+    - **`page.tsx`**: ポータルトップ（メニュー）
+    - **`occupancy/`**: 自習室在室状況モニター
+    - **`booking/`**:
+        - **`page.tsx`**: 予約メニュー
+        - **`reserve/`**: 面談予約フォーム
+        - **`rest/`**: 休み登録フォーム
 ├── gas-backend/                 # 予約システム用バックエンド
 │   ├── src/
 │   │   ├── Code.js              # メインロジック
 │   │   └── appsscript.json      # プロジェクト設定
 │   └── .clasp.json              # clasp設定
 └── docs/                        # ドキュメント
-```
 
 ## 🚀 開発環境のセットアップ
 

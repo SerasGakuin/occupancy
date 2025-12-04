@@ -1,0 +1,80 @@
+.base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.05em;
+    box-sizing: border-box;
+}
+
+.base:active {
+    transform: scale(0.98);
+}
+
+.base:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.primary {
+    background: var(--brand-color);
+    box-shadow: 0 10px 20px rgba(242, 159, 48, 0.25);
+}
+
+.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(242, 159, 48, 0.35);
+}
+
+.meeting {
+    background: linear-gradient(135deg, #f29f30 0%, #ffbe76 100%);
+    box-shadow: 0 10px 20px rgba(242, 159, 48, 0.25);
+}
+
+.meeting:hover {
+    box-shadow: 0 15px 30px rgba(242, 159, 48, 0.35);
+    transform: translateY(-2px);
+}
+
+.rest {
+    background: linear-gradient(135deg, #00cec9 0%, #55efc4 100%);
+    box-shadow: 0 10px 20px rgba(0, 206, 201, 0.25);
+    margin-top: 16px;
+}
+
+.rest:hover {
+    box-shadow: 0 15px 30px rgba(0, 206, 201, 0.35);
+    transform: translateY(-2px);
+}
+
+.gradient-teal {
+    background: linear-gradient(135deg, #00cec9 0%, #55efc4 100%);
+    box-shadow: 0 10px 20px rgba(0, 206, 201, 0.25);
+}
+
+.gradient-teal:hover {
+    box-shadow: 0 15px 30px rgba(0, 206, 201, 0.35);
+    transform: translateY(-2px);
+}
+
+.menuIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
