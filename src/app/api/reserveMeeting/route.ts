@@ -31,8 +31,9 @@ export async function POST(request: Request) {
         const startTime = arrivalTime.replace('T', '');
         const endTime = leaveTime.replace('T', '');
 
-        const startDateTime = new Date(`${date}T${startTime}`);
-        const endDateTime = new Date(`${date}T${endTime}`);
+        // Explicitly set timezone to JST (+09:00) to prevent server from interpreting as UTC
+        const startDateTime = new Date(`${date}T${startTime}+09:00`);
+        const endDateTime = new Date(`${date}T${endTime}+09:00`);
 
         // Create calendar event
         const calendar = await getGoogleCalendar();
