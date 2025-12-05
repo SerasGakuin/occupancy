@@ -1,0 +1,76 @@
+/* ========================================
+   GuideCard Component Styles
+   ======================================== */
+
+.card {
+    overflow: visible;
+}
+
+/* --- ガイド項目 --- */
+.item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+/* --- アイコン --- */
+.icon {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.8);
+    min-width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    box-shadow: var(--shadow-badge);
+}
+
+.content {
+    padding-top: 2px;
+}
+
+.head {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* --- モグラ装飾 (ガイド用) --- */
+.wrapper {
+    position: relative;
+}
+
+.mole {
+    position: absolute;
+    top: -90px;
+    left: 15px;
+    width: 90px;
+    height: auto;
+    transform: rotate(8deg);
+    filter: drop-shadow(var(--shadow-card));
+    z-index: 0;
+    transition: transform 1.3s ease;
+}
+
+.wrapper:hover .mole {
+    transform: rotate(8deg) translateY(-6px) scale(1.05);
+}

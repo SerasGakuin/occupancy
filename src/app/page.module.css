@@ -1,0 +1,12 @@
+/* ========================================
+   Page Layout Styles
+   ======================================== */
+
+/* --- グリッドレイアウト --- */
+.grid {
+  display: grid;
+  /* レスポンシブ対応: 最小260pxで自動折り返し */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  width: 100%;
+}

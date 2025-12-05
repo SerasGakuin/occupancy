@@ -1,0 +1,140 @@
+/* ========================================
+   PortalCard Component Styles
+   ======================================== */
+
+.card {
+    background: var(--card-bg-color);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-card);
+    padding: 40px 32px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(242, 159, 48, 0.3);
+}
+
+/* --- アイコン --- */
+.icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+    color: var(--brand-color);
+    transition: transform var(--transition-bounce);
+}
+
+.card:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* --- タイトル --- */
+.title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.02em;
+}
+
+/* --- 説明文 --- */
+.description {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* --- 背景装飾 (円) --- */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(242, 159, 48, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform var(--transition-normal);
+}
+
+.card:hover::before {
+    transform: scale(1.5);
+}
+
+/* --- コンテンツを前面に --- */
+.icon,
+.title,
+.description {
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(242, 159, 48, 0.3);
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+    color: var(--brand-color);
+    transition: transform var(--transition-bounce);
+}
+
+.card:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.02em;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* カードの装飾的な背景円 */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(242, 159, 48, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform var(--transition-normal);
+}
+
+.card:hover::before {
+    transform: scale(1.5);
+}
+
+/* コンテンツを前面に */
+.icon,
+.title,
+.description {
+    position: relative;
+    z-index: 1;
+}

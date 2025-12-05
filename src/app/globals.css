@@ -1,0 +1,276 @@
+/* ========================================
+   Seras学院 共通CSS変数
+   ======================================== */
+/* ========================================
+   Seras学院 ポータルサイト
+   Global Styles
+   ======================================== */
+
+:root {
+  /* カラーパレット */
+  --brand-color: #f29f30;
+
+  /* --- Colors: Text --- */
+  --text-main: #2d3436;
+  --text-sub: #a4b0be;
+  /* Restored user preference */
+  --text-light: #ffffff;
+
+  /* --- Colors: Background --- */
+  --bg-color: #f2f4f8;
+  /* Restored user preference */
+  --card-bg: rgba(255, 255, 255, 0.95);
+  /* Glass effect */
+  --card-bg-color: #ffffff;
+  /* Solid white */
+
+  /* --- Colors: Status --- */
+  --status-low: #00cec9;
+  /* Restored user preference */
+  --status-mid: #f29f30;
+  /* Restored user preference */
+  --status-high: #ff7675;
+  /* Restored user preference */
+
+  /* --- Typography --- */
+  --font-inter: 'Inter', sans-serif;
+  --font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 4.5rem;
+  /* Restored original size */
+  --font-size-medium: 1.6rem;
+  /* Restored original size */
+  --font-size-normal: 1rem;
+  --font-size-small: 0.85rem;
+
+  /* --- Layout & Spacing --- */
+  --card-max-width: 480px;
+  --card-border-radius: 24px;
+  --card-padding: 24px;
+  --header-height: 60px;
+
+  /* --- Shadows --- */
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+  --shadow-badge: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-input: 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-input-focus: 0 4px 12px rgba(242, 159, 48, 0.15);
+
+  /* --- Transitions --- */
+  --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-inter), var(--font-noto-sans-jp), sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(#cbd5e0 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+header {
+  margin: 20px 0 60px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: var(--font-size-medium);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  font-weight: 700;
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+
+.brand {
+  color: var(--brand-color);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: 0 auto;
+}
+
+/* ========================================
+   Components (Legacy/Global)
+   ======================================== */
+/* Most component styles have been moved to CSS Modules */
+
+.user-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: var(--shadow-badge);
+  backdrop-filter: blur(4px);
+  margin-top: 10px;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--text-sub);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseBadge {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-pulse-badge {
+  animation: pulseBadge 3s infinite ease-in-out;
+}
+
+.animate-pulse-icon {
+  animation: pulseIcon 2s infinite ease-in-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ========================================
+   Occupancy Styles
+   ======================================== */
+
+.timestamp-area {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  font-weight: 500;
+  margin-top: -10px;
+  margin-bottom: 50px;
+  padding-right: 10px;
+  width: 100%;
+  max-width: var(--card-max-width);
+}
+
+/* ========================================
+   Portal Top Styles
+   ======================================== */
+
+.brand {
+  position: relative;
+  display: inline-block;
+}
+
+/* ブランド名の下線アクセント */
+.brand::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(242, 159, 48, 0.2);
+  z-index: -1;
+  transform: skewX(-10deg);
+}
